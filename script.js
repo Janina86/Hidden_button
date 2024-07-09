@@ -1,18 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-  var buttonIds = ["button1", "button2", "button3"];
+  let buttonIds = ["button1", "button2", "button3"];
+  let randomIndex = Math.floor(Math.random() * buttonIds.length);
+  let winningButtonId = buttonIds[randomIndex];
 
-  var randomIndex = Math.floor(Math.random() * buttonIds.length);
-
-  var winningButtonId = buttonIds[randomIndex];
+  function handleButtonClick(event) {
+    let buttonId = event.target.id;
+    if (buttonId === winningButtonId) {
+      alert("You win!");
+    } else {
+      alert("You lose!");
+    }
+  }
 
   buttonIds.forEach(function(buttonId) {
-    var button = document.getElementById(buttonId);
-    button.addEventListener("click", function() {
-      if (buttonId === winningButtonId) {
-        alert("Ai câștigat!");
-      } else {
-        alert("Nu ai câștigat.");
-      }
-    });
+    let button = document.getElementById(buttonId);
+    button.addEventListener("click", handleButtonClick);
   });
 });
